@@ -4,22 +4,22 @@ provider "aws" {
   secret_key = var.secret_key
 }
 
-#resource "aws_instance" "name" {
-#  count = 1
-#  ami =  "ami-0989fb15ce71ba39e"
-#  vpc_security_group_ids = [ aws_security_group.web.id ]
-#  key_name = "pass.pem"
-#  instance_type = "t3.micro"
-#  subnet_id = aws_subnet.public.id
-#  #user_data = file("file.sh")
-#
- # tags = {
-  #  Name = "terraform"
-  #  Owner = "Sasha"
-  #  Project = "IT_Step"
-  #}
+resource "aws_instance" "name" {
+  count = 1
+  ami =  "ami-0989fb15ce71ba39e"
+  vpc_security_group_ids = [ aws_security_group.web.id ]
+  key_name = "pass.pem"
+  instance_type = "t3.micro"
+  subnet_id = aws_subnet.public.id
+  #user_data = file("file.sh")
 
-#}
+  tags = {
+    Name = "terraform"
+    Owner = "Sasha"
+    Project = "IT_Step"
+  }
+
+}
 
 resource "aws_security_group" "web" {
   name = "web"
